@@ -1,0 +1,671 @@
+---
+title: "MATH 1052H - S62 - Lecture 02"
+output:
+  ioslides_presentation:
+    css: ../style.css
+    fig_caption: yes
+    font-family: Lato Semibold
+    font-import: http://fonts.googleapis.com/css?family=Lato
+    widescreen: yes
+  beamer_presentation: default
+always_allow_html: yes
+---
+<style>
+citation {
+  font-size: 4px;
+}
+</style>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Confidence intervals
+
+## Why do we report confidence intervals?
+
+* A plausible range of values for the population parameter is called a **confidence interval**.
+* Using only a sample statistic to estimate a parameter is like **fishing with a spear** in a murky lake, and using a confidence interval is like **fishing with a net**.
+* We can throw a spear where we saw a fish but we will probably miss. If we toss a net in that area, we have a good chance of catching the fish.
+
+So the analogy: if we report a point estimate, we probably won't hit the exact population parameter. If we report a range of plausible values we have a good shot at capturing the parameter. 
+
+## Average number of exclusive relationships
+
+A random sample of 50 college students were asked how many exclusive relationships they have been in so far. This sample yielded a mean of 3.2 and a standard deviation of 1.74. Estimate the true average number of exclusive relationships using this sample.
+
+$$
+\bar{x} = 3.2 \qquad s = 1.74
+$$
+
+<span style="font-color: blue;">
+The approximate 95% confidence interval is defined as 
+$$
+\text{point estimate} \pm 2 \times \text{SE}
+$$
+</span>
+
+$$
+SE = \frac{s}{\sqrt{n}} = \frac{1.74}{\sqrt{50}} \approx 0.25
+$$
+
+## Average number of exclusive relationships
+
+A random sample of 50 college students were asked how many exclusive relationships they have been in so far. This sample yielded a mean of 3.2 and a standard deviation of 1.74. Estimate the true average number of exclusive relationships using this sample.
+
+$$
+\bar{x} = 3.2 \qquad s = 1.74
+$$
+
+$$
+\begin{eqnarray*}
+\bar{x} \pm 2 \times SE &=& 3.2 \pm 2 \times 0.25 \\
+&=& (3.2 - 0.5, 3.2 + 0.5) \\
+&=& (2.7, 3.7)
+\end{eqnarray*}
+$$
+
+## Practice
+
+Which of the following is the correct interpretation of this confidence interval?
+
+We are 95% confident that
+
+* the average number of exclusive relationships college students in this sample have been in is between 2.7 and 3.7.
+* college students on average have been in between 2.7 and 3.7 exclusive relationships.
+* a randomly chosen college student has been in 2.7 to 3.7 exclusive relationships.
+* 95% of college students have been in 2.7 to 3.7 exclusive relationships.
+
+## Practice
+
+Which of the following is the correct interpretation of this confidence interval?
+
+We are 95% confident that
+
+* the average number of exclusive relationships college students in this sample have been in is between 2.7 and 3.7.
+* <span id="highlight">college students on average have been in between 2.7 and 3.7 exclusive relationships.</span>
+* a randomly chosen college student has been in 2.7 to 3.7 exclusive relationships.
+* 95% of college students have been in 2.7 to 3.7 exclusive relationships.
+
+## A more accurate interval
+
+**Confidence interval, a general formula**
+$$
+\text{point estimate} \pm z^\star \cdot SE
+$$
+
+Conditions when the point estimate = $\bar{x}$:
+
+* **Independence:** Observations in the sample must be independent
+    - random sample/assignment
+    -  if sampling without replacement, $n <$ 10% of population
+* **Sample size / skew:** $n \ge 30$ and population distribution should not be extremely skewed
+
+**Note:** We will discuss working with samples where $n < 30$ later.
+
+
+## Capturing the population parameter
+
+What does 95\% confident mean?
+
+* Suppose we took many samples and built a confidence interval from each sample using the equation $\text{point estimate} \pm 2 \cdot SE$.
+* Then about 95% of those intervals would contain the true population $\mu$.
+
+<div style="display: inline-block; float: left; width: 50%;">
+* The figure to the right shows this process with 25 samples, where 24 of the resulting confidence intervals contain the true average number of exclusive relationships, and one does not.
+</div>
+<div style="display: inline-block; float: right; width: 50%; text-align: right;">
+<img src="./fig/95PercentConfidenceInterval.png" width = 400>
+</div>
+
+## Width of an interval
+
+If we want to be more certain that we capture the population parameter, *i.e.*, increase our confidence level, should we use a wider interval or a smaller interval?
+
+## Width of an interval
+
+If we want to be more certain that we capture the population parameter, i.e. increase our confidence level, should we use a wider interval or a smaller interval?
+
+**A wider interval.**
+
+## Width of an interval
+
+If we want to be more certain that we capture the population parameter, i.e. increase our confidence level, should we use a wider interval or a smaller interval?
+
+**A wider interval.**
+
+Can you see any drawbacks to using a wider interval?
+
+## Width of an interval
+
+If we want to be more certain that we capture the population parameter, i.e. increase our confidence level, should we use a wider interval or a smaller interval?
+
+**A wider interval.**
+
+Can you see any drawbacks to using a wider interval?
+
+<center>
+<img src="./fig/garfield.png" width = 700>
+</center>
+
+**If the interval is too wide it may not be very informative.**
+
+<span style = "font-size: 10px; font-style: oblique;">http://web.as.uky.edu/statistics/users/earo227/misc/garfield_weather.gif</span>
+
+## Changing the confidence level
+
+$$
+\text{point estimate} \pm z^\star \cdot SE
+$$
+
+* In a confidence interval, $z^\star \cdot SE$ is called the **margin of error** (ME), and for a given sample, the margin of error changes as the confidence level changes.
+* In order to change the confidence level we need to adjust $z^\star$ in the above formula.
+* Commonly used confidence levels in practice are 90%, 95%, 98%, and 99%.
+* For a 95% confidence interval, $z^\star = 1.96$.
+* However, using the standard normal ($z$) distribution, it is possible to find the appropriate $z^\star$ for any confidence level.
+
+## Practice 
+
+Which of the below Z scores is the appropriate $z^\star$ when calculating a 98% confidence interval?
+
+<div style="display: inline-block; float: left; width: 50%;">
+* $Z = 2.05$
+* $Z = 1.96$
+* $Z = 2.33$
+* $Z = -2.33$
+* $Z = -1.65$
+</div>
+<div style="display: inline-block; float: right; width: 50%; text-align: right;">
+<center>
+<!--<img src="./fig/middle98.png" width=400>-->
+</center>
+</div>
+
+## Practice 
+
+Which of the below Z scores is the appropriate $z^\star$ when calculating a 98% confidence interval?
+
+<div style="display: inline-block; float: left; width: 50%;">
+* $Z = 2.05$
+* $Z = 1.96$
+* $Z = 2.33$
+* $Z = -2.33$
+* $Z = -1.65$
+</div>
+<div style="display: inline-block; float: right; width: 50%; text-align: right;">
+<center>
+<img src="./fig/middle98.png" width=500>
+</center>
+</div>
+
+# Testing Hypotheses: CIs
+
+## Testing hypotheses using confidence intervals
+
+Earlier we calculated a 95% confidence interval for the average number of exclusive relationships college students have been in to be (2.7, 3.7). Based on this confidence interval, do these data support the hypothesis that college students on average have been in more than 3 exclusive relationships?
+
+* The associated hypotheses are:
+    - $H_0$: $\mu = 3$: College students have been in 3 exclusive relationships, on average
+    - $H_A$: $\mu > 3$: College students have been in more than 3 exclusive relationships, on average
+
+## Testing hypotheses using confidence intervals
+
+Earlier we calculated a 95% confidence interval for the average number of exclusive relationships college students have been in to be (2.7, 3.7). Based on this confidence interval, do these data support the hypothesis that college students on average have been in more than 3 exclusive relationships?
+
+* The associated hypotheses are:
+    - $H_0$: $\mu = 3$: College students have been in 3 exclusive relationships, on average
+    - $H_A$: $\mu > 3$: College students have been in more than 3 exclusive relationships, on average
+* Since the null value is included in the interval, we do not reject the null hypothesis in favor of the alternative.
+* This is a quick-and-dirty approach for hypothesis testing. However it doesn't tell us the likelihood of certain outcomes under the null hypothesis, i.e., the *p*-value, based on which we can make a decision on the hypotheses.
+
+## Summary
+
+Confidence intervals for the population mean $\mu$ from large samples have the form
+$$
+\bar{x} \pm \text{ME} = \bar{x} \pm z^\star \cdot \text{SE}
+$$
+and explicitly, the Standard Error, $\text{SE}$, is
+$$
+\text{SE} = \frac{\sigma}{\sqrt{n}}.
+$$
+## Confidence Intervals versus Hypothesis Testing
+
+<div style="text-size:18px; top:-20px;">
+We have slightly different **Success-Failure Conditions** (for number of samples required):
+
+* **CI**: at least 10 *observed* successes and failures
+* **HT**: at least 10 *expected* successes and failures, under the null assumption
+
+## Confidence Intervals versus Hypothesis Testing
+
+<div style="text-size:18px; top:-20px;">
+**Standard Error**
+
+* **CI**: calculated using the sample proportion, $\hat{p}$
+$$
+\text{SE} = \sqrt{\frac{p(1-p)}{n}}.
+$$
+* **HT**: calculated using the null hypothesis value, $p_0$
+$$
+\text{SE} = \sqrt{\frac{p_0(1-p_0)}{n}}.
+$$
+</div>
+
+## Practice
+
+The GSS found that 571 out of 670 (85%) of Americans answered the question on experimental design correctly. Do these data provide convincing evidence that more than 80% of Americans have a good intuition about experimental design?
+
+$$
+H_0: p = 0.80 \qquad \; \qquad H_A: p > 0.80
+$$
+(we use a one-tailed hypothesis test because that is our question: "more than 80%")
+
+## Practice
+
+The GSS found that 571 out of 670 (85%) of Americans answered the question on experimental design correctly. Do these data provide convincing evidence that more than 80% of Americans have a good intuition about experimental design?
+
+$$
+\begin{split}
+H_0: p = 0.80 \qquad &\; \qquad H_A: p > 0.80\\
+\text{SE} = \sqrt{\frac{0.80(0.20)}{670}} &= 0.0154\\
+\end{split}
+$$
+
+## Practice
+
+The GSS found that 571 out of 670 (85%) of Americans answered the question on experimental design correctly. Do these data provide convincing evidence that more than 80% of Americans have a good intuition about experimental design?
+
+$$
+\begin{split}
+H_0: p = 0.80 \qquad &\; \qquad H_A: p > 0.80\\
+\text{SE} = \sqrt{\frac{0.80(0.20)}{670}} &= 0.0154\\
+Z = \frac{0.85 - 0.80}{0.0154} &= 3.25 \\
+\end{split}
+$$
+
+## Practice (*p*-value)
+
+Compute the *p*-value for this value of $z$.
+
+**Our Method**:
+Use R!
+```{r}
+1 - pnorm(q = 3.25)
+pnorm(q = 3.25, lower.tail = FALSE)
+```
+So the *p*-value is 0.0006.
+
+## Practice: Conclusion
+
+Since the *p*-value is low, we reject $H_0$. The data provide convincing evidence that more than 80% of Americans have a good intuition on experimental design.
+
+## Practice Question 2
+
+11% of 1,001 Americans responding to a 2006 Gallup survey stated that they have objections to celebrating Halloween on religious grounds. At 95% confidence level, the margin of error for this survey is $\pm 3$%. A news piece on this study's findings states: "More than 10% of all Americans have objections on religious grounds to celebrating Halloween." At 95% confidence level, is this news piece's statement justified?
+
+1. Yes
+2. No
+3. Can’t tell
+
+## Practice Question 2
+
+11% of 1,001 Americans responding to a 2006 Gallup survey stated that they have objections to celebrating Halloween on religious grounds. At 95% confidence level, the margin of error for this survey is $\pm 3$%. A news piece on this study's findings states: "More than 10% of all Americans have objections on religious grounds to celebrating Halloween." At 95% confidence level, is this news piece's statement justified?
+
+```{r}
+c(11-3, 11+3)
+```
+
+1. Yes
+2. <span id="highlight">No</span> (10 is between 8 and 14)
+3. Can’t tell
+
+# Linear Regression and Hypothesis
+
+
+```{r echo=FALSE, message = FALSE, warning = FALSE}
+poverty = read.table("poverty.txt", h = T, sep = "\t")
+library(openintro)
+data(COL)
+```
+
+## Objective
+
+In science, we often obtain data from experiments or observational studies, and then are interested in **modeling** it. How we model it varies from field to field, but underlying many of the models used in science are **statistical models**. In this lecture, we will
+be examining one of the foundational models used all through every scientific field.
+
+We will begin by quantifying the relationship between two numerical variables, 
+as well as modeling numerical response variables using a numerical or 
+categorical explanatory variable. The model is therefore "find the relationship between two variables".
+
+## Eyeballing the line
+
+<div style= "float:left; position: relative;">
+```{r echo=FALSE}
+par(mar=c(4,4,1,1), las=1, mgp=c(2.5,0.7,0), cex.lab = 1.5, cex.axis = 1.5)
+plot(poverty$Poverty ~ poverty$Graduates, ylab = "% in poverty", 
+     xlab = "% HS grad", pch=19, col=COL[1,2])
+mod <- lm(poverty$Poverty ~ poverty$Graduates)
+abline(mod, col = COL[4], lwd = 3, lty = 1)
+y1 = mod$coefficients[1] + 2 + (1.1 * mod$coefficients[2]) * poverty$Graduates
+abline(lm(y1 ~ poverty$Graduates), lwd = 3, col = COL[2], lty = 2)
+abline(h = 14, lwd = 3, col = COL[5], lty = 3)
+y2 = 114 - (12/10) * seq(70,100,1)
+abline(lm(y2 ~ seq(70,100,1)), lwd = 3, col = COL[3], lty = 4)
+legend("topright", inset = 0.05, c("(a)","(b)","(c)", "(d)"), 
+       col = c(COL[4],COL[2],COL[5],COL[3]), lwd = 3, lty = c(1,2,3,4))
+```
+</div>
+
+<div style= "float:right; position:relative; inline:block;">
+**Which of the lines on the figure appears to be the line that best fits the linear relationship between \% in poverty and \% HS grad? Choose one.**
+</div>
+
+## Residuals
+
+**Residuals** are the leftovers from the model fit: Data = Fit + Residual
+
+```{r echo = FALSE}
+par(mar=c(4,4,1,1), las=1, mgp=c(2.5,0.7,0), cex.lab = 1.5, cex.axis = 1.5)
+plot(poverty$Poverty ~ poverty$Graduates, ylab = "% in poverty", 
+     xlab = "% HS grad", pch=19, col=COL[1,2])
+lm_pov_grad = lm(poverty$Poverty ~ poverty$Graduates)
+pred = predict(lm_pov_grad)
+x = poverty$Graduates
+for(i in 1:length(pred)){
+  lines(c(x[i],x[i]), c(poverty$Poverty[i],pred[i]), col = COL[2])
+}
+abline(lm_pov_grad, col = COL[4], lwd = 3)
+```
+</div>
+
+## Residuals (cont.)
+
+Formally, residuals are the difference between the 
+observed ($y_i$) and predicted $\hat{y}_i$. 
+
+$$
+e_i = y_i - \hat{y}_i
+$$
+
+
+## Specific Residuals
+
+```{r, echo = FALSE}
+par(mar=c(4,4,1,1), las=1, mgp=c(2.5,0.7,0), cex.lab = 1.5, cex.axis = 1.5)
+
+plot(poverty$Poverty ~ poverty$Graduates, ylab = "% in poverty", xlab = "% HS grad", pch=19, col=COL[1,2])
+lm_pov_grad = lm(poverty$Poverty ~ poverty$Graduates)
+
+pred = predict(lm_pov_grad)
+x = poverty$Graduates
+
+for(i in c(9,40)){
+  lines(c(x[i],x[i]), c(poverty$Poverty[i],pred[i]), col = COL[2])
+  text(x[i]+0.5, poverty$Poverty[i], "y", cex = 1.5, col = "blue")
+  text(x[i]+1.2, mean(c(poverty$Poverty[i],pred[i])), as.character(round(poverty$Poverty[i] - pred[i],2)), cex = 1.5, col = "orange")
+  text(x[i]-0.5, pred[i], expression(hat(y)), cex = 1.5, col = COL[4])
+}
+text(x[9], poverty$Poverty[9] + 0.5, "DC", col = COL[2])
+text(x[40], poverty$Poverty[40] - 0.5, "RI", col = COL[2])
+
+abline(lm_pov_grad, col = COL[4], lwd = 3)
+```
+
+* \% living in poverty in DC is 5.44\% more than predicted.
+* \% living in poverty in RI is 4.16\% less than predicted.
+
+
+
+## A measure for the best line
+
+* We want a line that has small residuals:
+    - Option 1: Minimize the sum of magnitudes (absolute values) of residuals
+$$
+|e_1| + |e_2| + \cdots + |e_n|
+$$
+    - Option 2: Minimize the sum of squared residuals -- **least squares**
+$$
+e_1^2 + e_2^2 + \cdots + e_n^2
+$$
+    - Option 3 ... 100: actual topics of research!
+* Why least squares?
+    - Most commonly used
+    - Easier to compute by hand and using software
+    - In many applications, a residual twice as large as another is 
+    usually more than twice as bad
+
+## The least squares line
+
+$$
+\hat{y} = \beta_0 + \beta_1 x
+$$
+
+**Notation:**
+
+* Intercept:
+    - Parameter: $\beta_0$ 
+    - Point estimate: $b_0$ 
+* Slope:
+    - Parameter: $\beta_1$ 
+    - Point estimate: $b_1$ 
+
+## The least squares line
+
+```{r}
+mod <- lm(Poverty ~ Graduates, data = poverty)
+summary(mod)
+```
+
+## Linear Regression
+
+$$
+\hat{y} = \beta_0 + \beta_1 x
+$$
+
+**Notation:**
+
+* Intercept:
+    - Parameter: $\beta_0$ 
+    - Point estimate: $b_0$ 
+* Slope:
+    - Parameter: $\beta_1$ 
+    - Point estimate: $b_1$ 
+
+## Note
+
+Both parameters have **point estimates** ... these are statistics! That 
+means we can do hypothesis tests on them!
+
+## Hypothesis Tests for Linear Regression
+
+Most of the time, we only do hypothesis tests for linear regression
+on the **slope** - specifically, on $\beta_1$ as the parameter.
+
+So what is the hypothesis? 
+
+What do we say about the null ... default, base, nothing going on,
+nothing to see, do not pass go ...
+
+## Null Hypothesis for Slopes
+
+Remember what a slope is: it's actually a representation of the relationship
+between two variables (like correlation). So our default is that there
+**is no relationship**. What does this correspond to? If there's no relationship,
+that corresponds to correlation 0 ... which is also slope 0!
+
+Thus
+
+$H_0$: $\beta_1 = 0$
+
+is our null hypothesis.
+
+## Alternative Hypothesis for Slopes
+
+So what is the alternative hypothesis? We only ever care about one:
+
+$H_A$: $\beta_1 \neq 0$.
+
+So now we can perform hypothesis tests inside linear regressions!
+
+## Let's Consider an Example
+
+```{r echo=FALSE, message = FALSE, warning = FALSE}
+poverty = read.table("poverty.txt", h = T, sep = "\t")
+library(openintro)
+data(COL)
+```
+USA states (and DC), with percent of population in poverty, and
+percent of population that graduated from high school.
+
+<div style= "float:left; position: relative;">
+```{r povLine, echo = FALSE, out.width = 500}
+par(mar=c(4,4,1,1), las=1, mgp=c(2.5,0.7,0), cex.lab = 1.5, cex.axis = 1.5)
+plot(poverty$Poverty ~ poverty$Graduates, ylab = "% in poverty", xlab = "% HS grad", pch=19, col=COL[1,2])
+lm_pov_grad = lm(poverty$Poverty ~ poverty$Graduates)
+abline(lm_pov_grad, col = COL[4], lwd = 3)
+```
+</div>
+
+## Poverty - HS Grads
+
+So what is our hypothesis in this problem? Let's start with words:
+
+**Null Hypothesis**: there is no relationship between the percentage of the
+population that graduate from high school, and the percentage of the population
+living in poverty.
+
+**Alternative Hypothesis**: there is a relationship between these two variables.
+
+## Poverty - HS Grads
+
+Now, translate this to symbols:
+
+$$
+H_0: \beta_1 = 0 \qquad \text{versus} \qquad H_A: \beta_1 \neq 0.
+$$
+
+Now, how do we **do** this? We can't do the test statistic like we normally
+do ... but we don't have to!
+
+## Poverty - HS Grads - Doing the Test
+
+Take a close look at the row starting with **Graduates**: what do you see?
+
+```{r}
+mod <- lm(Poverty ~ Graduates, data = poverty)
+summary(mod)
+```
+
+## Poverty - HS Grads - Doing the Test
+
+Variable     Estimate Std. Error t value Pr(>|t|)   
+----------   -------- ---------- ------- --------
+Graduates    -0.62122 0.07902    -7.862  3.11e-10 ***
+
+<br/>
+
+So we have:
+
+* point estimate: $-0.62122$
+* SE: $0.07902$
+* test statistic: $t = -7.862$
+* p-value: $p = 3.11e-10$ (very, very small!)
+
+So what's our conclusion?
+
+## Poverty - Conclusions
+
+Since we find an extremely small p-value (smaller than $\alpha = 0.05$
+for sure), we **reject the null hypothesis**, and conclude that there
+**is** a relationship between the percentage of the population graduating
+from high school, and the percentage of the population living in poverty.
+We estimate $b_1 = -0.621$. 
+
+## So ... Hypotheses on Linear Models
+
+So we can estimate slopes, then do hypothesis tests on them, which lets
+us determine if we believe there are associations (or "relationships") 
+between them. And we don't have to do much ... just fit a model in R,
+and then read the answer.
+
+# Connections between t-tests and Linear Regression
+
+## Why are they the same thing?
+
+So why are t-tests and linear regression the same thing?
+
+* t-test: we're comparing a set of data to some value $\mu_0$
+* regression: we have a row we haven't considered, labeled (Intercept)
+
+So, this actually means that
+
+$$
+H_0: \mu = \mu_0 \qquad \text{(t-test on mean)}
+$$
+is equivalent to
+$$
+H_0: \beta_0 = \mu_0 \qquad \text{(t-test on intercept - mean!)}
+$$
+
+In other words, a t-test it’s our linear model $y = \beta_0 + \beta_1 x$ 
+where the slope term is gone since there is no x.
+
+## Let's Try an Example
+
+Consider the dolphin example from before, with some specific data (not exactly
+the same). We are interested in $H_0: \mu = 4.0$. 
+
+```{r}
+dat <- c(2.56, 3.86, 5.66, 5.95, 7.67, 1.92, 10.01, 6.00,
+         4.47, 6.83, 1.47, 1.02, 8.36, 3.36, 5.34, 1.75,
+         4.55, 4.78, 4.91)
+mod_a <- t.test(x = dat, alternative = "two.sided", mu = 4)
+mod_b <- lm((dat - 4) ~ 1)
+
+```
+
+## Fitting using the t.test() function
+
+```{r}
+mod_a
+```
+
+## Fitting using the Linear Model
+
+```{r}
+summary(mod_b)
+```
+
+## So ...
+
+That (Intercept) piece we ignored from our previous section turns out to
+be a t-test on the mean, when considered without a slope! Neat!
+
+
+
+# Summary
+
+## Where are we now?
+
+As of the end of the second lecture, we have now done a whirlwind
+review of the key material of MATH 1051H that you are expected
+to remember, with references to the earlier probability material
+(such as the normal and t distributions, and probabilities under
+their curves). 
+
+## What chapters have been covered?
+
+If you want to review in the textbook, the following chapters
+are considered to be "done" and you are expected to be able to
+reference the material from them:
+
+* Chapter 5
+* Chapter 6.1
+* Chapter 7.1
+* Chapter 8.1-8.3
+
+Our semester will cover the rest of Chapters 6, 7, and 8, and
+also the material of Chapter 9. In addition we will have a 
+special unit toward the end of the semester where we cover
+some material not in the textbook aside from brief mentions
+in Chapter 1 (designing statistical experiments).

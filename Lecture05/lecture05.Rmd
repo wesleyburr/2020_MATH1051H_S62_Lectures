@@ -362,13 +362,13 @@ Z &= \frac{-0.545 - 0}{\frac{8.887}{\sqrt{200}}} = \frac{-0.545}{0.626} \\
 &= -0.87
 \end{split}
 $$
-with p-value of $0.1949 \times 2 = 0.3898$.
+with p-value of $0.19215 \times 2 = 0.3843$.
 
 ## Conclusion
 
 How did we get this p-value?
 ```{r}
-2 * pt(-0.87, df = 199, lower.tail = TRUE)
+2* pnorm(-0.87, lower.tail = TRUE)
 ```
 
 Since p-value > 0.05, we fail to reject, and the data do not provide convincing evidence of a difference between the average reading and writing scores.

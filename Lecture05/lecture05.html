@@ -3518,15 +3518,15 @@ Since students are sampled randomly and are less than 10% of all high school stu
 Z &amp;= \frac{-0.545 - 0}{\frac{8.887}{\sqrt{200}}} = \frac{-0.545}{0.626} \\
 &amp;= -0.87
 \end{split}
-\] with p-value of \(0.1949 \times 2 = 0.3898\).</p>
+\] with p-value of \(0.19215 \times 2 = 0.3843\).</p>
 
 </article></slide><slide class=""><hgroup><h2>Conclusion</h2></hgroup><article  id="conclusion">
 
 <p>How did we get this p-value?</p>
 
-<pre class = 'prettyprint lang-r'>2 * pt(-0.87, df = 199, lower.tail = TRUE)</pre>
+<pre class = 'prettyprint lang-r'>2* pnorm(-0.87, lower.tail = TRUE)</pre>
 
-<pre >## [1] 0.3853486</pre>
+<pre >## [1] 0.3843004</pre>
 
 <p>Since p-value &gt; 0.05, we fail to reject, and the data do not provide convincing evidence of a difference between the average reading and writing scores.</p>
 
